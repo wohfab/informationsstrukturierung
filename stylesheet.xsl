@@ -23,7 +23,7 @@
     <ul>
     <xsl:for-each select="//cocktail">
         <li>
-            <xsl:value-of select="@name"/>
+            <strong><xsl:value-of select="@name"/></strong>
             <ul>
                 <xsl:for-each select="zutaten/zutat">
                     <li>
