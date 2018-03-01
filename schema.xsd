@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="cocktailbar">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="cocktails" maxOccurs="1"/>
+      <xs:element name="glaeser" maxOccurs="1"/>
+      <xs:element name="zutaten" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="cocktails">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="cocktail" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

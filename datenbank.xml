@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+
+<cocktailbar>
+
+    <cocktails>
+        <cocktail id="negroni" name="Negroni" glas="">
+        <zutaten>
+            <zutat id="london-dry-gin" menge="30" />
+            <zutat id="vermouth-sweet" menge="30" />
+            <zutat id="campari" menge="30" />
+        </zutaten>
+        </cocktail>
+
+        <cocktail id="gin-tonic" name="Gin &amp; Tonic" glas="">
+        <zutaten>
+            <zutat id="london-dry-gin" menge="50" />
+            <zutat id="tonic-water" menge="50" />
+        </zutaten>
+        </cocktail>
+
+        <cocktail id="martini" name="Martini" glas="">
+        <zutaten>
+            <zutat id="london-dry-gin" menge="60" />
+            <zutat id="vermouth-dry" menge="30" />
+        </zutaten>
+        </cocktail>
+
+        <cocktail id="manhattan" name="Manhattan" glas="">
+        <zutaten>
+            <zutat id="whiskey-rye" menge="60" />
+            <zutat id="vermouth-sweet" menge="30" />
+            <zutat id="angostura-bitters" menge="2" einheit="Spritzer" />
+        </zutaten>
+        </cocktail>
+    </cocktails>
+
+
+    <glaeser></glaeser>
+    
+    <zutaten>
+        <zutat id="london-dry-gin" name="London Dry Gin" />
+        <zutat id="vermouth-sweet" name="Sweet Vermouth" />
+        <zutat id="vermouth-dry" name="Dry Vermouth" />
+        <zutat id="campari" name="Campari" />
+        <zutat id="tonic-water" name="Tonic Water" />
+        <zutat id="angostura-bitters" name="Angostura Bitter" />
+        <zutat id="whiskey-rye" name="Rye Whiskey" />
+    </zutaten>
+
+</cocktailbar>

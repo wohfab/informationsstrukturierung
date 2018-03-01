@@ -1,0 +1,27 @@
+
+body {
+    font-family: sans-serif;
+    padding: 2rem;
+    background-color: #fcfcfc;
+    color: #222;
+    font-size: 16px;
+}
+
+h1 {
+    margin: 1rem 0;
+}
+
+small {
+    font-family: monospace;
+    margin-bottom: 1rem;
+}
+small.menge {
+    padding-left: .5rem;
+}
+
+ul {
+    list-style: none;
+}
+ul > li {
+    padding: 0.2rem 0;
+}
