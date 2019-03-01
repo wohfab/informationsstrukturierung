@@ -1,19 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Oswald|Raleway');
+
+:root {
+    --font-sec: 'Raleway', sans-serif;
+    --font-prim: 'Oswald', sans-serif;
+    --font-mono: 'Inconsolata', monospace;
+    --c-white: #FEFEFE;
+    --c-gray-l: #EEE;
+    --c-gray: #555;
+    --c-gray-d: #333;
+}
 
 body {
-    font-family: sans-serif;
+    font-family: var(--font-prim);
     padding: 2rem;
-    background-color: #fcfcfc;
-    color: #222;
+    background-color: var(--c-white);
+    color: var(--c-gray-d);
     font-size: 16px;
 }
 
 h1 {
     margin: 1rem 0;
+    font-family: 'Raleway', sans-serif;
 }
 
 small {
-    font-family: monospace;
-    margin-bottom: 1rem;
+    font-family: var(--font-mono);
 }
 small.menge {
     padding-left: .5rem;
@@ -21,7 +32,36 @@ small.menge {
 
 ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
-ul > li {
-    padding: 0.2rem 0;
+.cocktail-list {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1rem;
+}
+.single-cocktail {
+    border: 3px solid var(--c-gray-l);
+    grid-column: 2/11;
+    display: grid;
+    grid-column-gap: 1rem;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 1rem;
+}
+.cocktail-info {
+    grid-column: 1/8;
+}
+.cocktail-name {
+    font-family: var(--font-sec);
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 10px solid var(--c-gray);
+}
+.ingredient-list {
+}
+.cocktail-glass {
+    background-color: var(--c-gray-l);
+    height: 15rem;
+    grid-column: 8/13;
 }

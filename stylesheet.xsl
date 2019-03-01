@@ -20,13 +20,17 @@
             <strong>23-TXT-BaCl4 - Informationsstrukturierung</strong>
         </a> an der Universität Bielefeld.</small>
     <h2>Cocktails</h2>
-    <ul>
+    <ul class="cocktail-list">
     <xsl:for-each select="//cocktail">
-        <li>
-            <strong><xsl:value-of select="@name"/></strong>
-            <ul>
+        <xsl:variable name="cocktail-glass" select="@glass" />
+        <li class="single-cocktail">
+            <div class="cocktail-info">
+            <div class="cocktail-name">
+                <strong><xsl:value-of select="@name" /></strong>
+            </div>
+            <ul class="ingredient-list">
                 <xsl:for-each select="zutaten/zutat">
-                    <li>
+                    <li class="single-ingredient">
                         <xsl:variable name="zutat_id" select="@id" />
                         <xsl:for-each select="//zutat">
                             <xsl:if test="$zutat_id=@id">
@@ -51,6 +55,12 @@
                     </li>
                 </xsl:for-each>
             </ul>
+            </div>
+            <div class="cocktail-glass">
+                <img>
+                    <xsl:attribute name="src">img/glass-<xsl:value-of select="$cocktail-glass" />.svg</xsl:attribute>/
+                </img>
+            </div>
         </li>
     </xsl:for-each>
     </ul>
