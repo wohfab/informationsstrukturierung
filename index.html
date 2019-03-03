@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<title>Digitale Cocktailbar</title>
+<script src="js/script.js"></script><title>Digitale Cocktailbar</title>
 </head>
 <body>
 <h1>Die digitale Cocktailbar</h1>
 <small>Ein Projekt im Rahmen des Moduls
         <a href="https://ekvv.uni-bielefeld.de/sinfo/publ/modul/26802491" title="Modulbeschreibung - Informationsstrukturierung"><strong>23-TXT-BaCl4 - Informationsstrukturierung</strong></a> an der Universität Bielefeld.</small><h2>Cocktails</h2>
-<ul class="cocktail-list">
+<ul id="cocktail-list" class="cocktail-list">
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Negroni</strong></div>
+<div class="cocktail-name">Negroni</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">London Dry Gin<small class="menge">30 ml</small>
 </li>
@@ -24,11 +24,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-whiskey.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Gin &amp; Tonic</strong></div>
+<div class="cocktail-name">Gin &amp; Tonic</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">London Dry Gin<small class="menge">50 ml</small>
 </li>
@@ -36,11 +36,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-long.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Martini</strong></div>
+<div class="cocktail-name">Martini</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">London Dry Gin<small class="menge">60 ml</small>
 </li>
@@ -48,11 +48,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-martini.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Manhattan</strong></div>
+<div class="cocktail-name">Manhattan</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">Rye Whiskey<small class="menge">60 ml</small>
 </li>
@@ -62,11 +62,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-manhattan.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Daiquiri</strong></div>
+<div class="cocktail-name">Daiquiri</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">White Rum<small class="menge">60 ml</small>
 </li>
@@ -76,11 +76,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-daiquiri.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Dark 'n' Stormy</strong></div>
+<div class="cocktail-name">Dark 'n' Stormy</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">Gosling's Black Seal Rum<small class="menge">50 ml</small>
 </li>
@@ -88,11 +88,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-cocktail.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Margarita</strong></div>
+<div class="cocktail-name">Margarita</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">Silver Tequila<small class="menge">60 ml</small>
 </li>
@@ -102,11 +102,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-daiquiri.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-daiquiri.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Tequila Sunrise</strong></div>
+<div class="cocktail-name">Tequila Sunrise</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">Silver Tequila<small class="menge">45 ml</small>
 </li>
@@ -116,11 +116,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-long.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-long.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Mai Tai</strong></div>
+<div class="cocktail-name">Mai Tai</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">White Rum<small class="menge">40 ml</small>
 </li>
@@ -134,11 +134,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-cocktail.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-cocktail.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Long Island Icetea</strong></div>
+<div class="cocktail-name">Long Island Iced Tea</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">Silver Tequila<small class="menge">15 ml</small>
 </li>
@@ -158,11 +158,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-long.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-long.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Sex on the Beach</strong></div>
+<div class="cocktail-name">Sex on the Beach</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">Vodka<small class="menge">40 ml</small>
 </li>
@@ -174,11 +174,11 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-beach.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-beach.svg"></div>
 </li>
 <li class="single-cocktail">
 <div class="cocktail-info">
-<div class="cocktail-name"><strong>Cuba Libre</strong></div>
+<div class="cocktail-name">Cuba Libre</div>
 <ul class="ingredient-list">
 <li class="single-ingredient">Cola<small class="menge">120 ml</small>
 </li>
@@ -188,7 +188,7 @@
 </li>
 </ul>
 </div>
-<div class="cocktail-glass"><img src="img/glass-cocktail.svg"></div>
+<div class="cocktail-glass"><img class="glass-img" src="img/glass-cocktail.svg"></div>
 </li>
 </ul>
 </body>

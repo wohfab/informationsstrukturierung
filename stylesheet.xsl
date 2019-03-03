@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"></link>
+    <script src="js/script.js"></script>
     <title>Digitale Cocktailbar</title>
 </head>
 
@@ -20,14 +21,11 @@
             <strong>23-TXT-BaCl4 - Informationsstrukturierung</strong>
         </a> an der Universität Bielefeld.</small>
     <h2>Cocktails</h2>
-    <ul class="cocktail-list">
+    <ul id="cocktail-list" class="cocktail-list">
     <xsl:for-each select="//cocktail">
-        <xsl:variable name="cocktail-glass" select="@glass" />
         <li class="single-cocktail">
             <div class="cocktail-info">
-            <div class="cocktail-name">
-                <strong><xsl:value-of select="@name" /></strong>
-            </div>
+            <div class="cocktail-name"><xsl:value-of select="@name" /></div>
             <ul class="ingredient-list">
                 <xsl:for-each select="zutaten/zutat">
                     <li class="single-ingredient">
@@ -57,8 +55,8 @@
             </ul>
             </div>
             <div class="cocktail-glass">
-                <img>
-                    <xsl:attribute name="src">img/glass-<xsl:value-of select="$cocktail-glass" />.svg</xsl:attribute>/
+                <img class="glass-img">
+                    <xsl:attribute name="src">img/glass-<xsl:value-of select="@glass" />.svg</xsl:attribute>/
                 </img>
             </div>
         </li>

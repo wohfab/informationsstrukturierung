@@ -4,7 +4,7 @@
 <cocktailbar>
 
     <cocktails>
-        <cocktail id="negroni" name="Negroni" glas="whiskey">
+        <cocktail id="negroni" name="Negroni" glass="whiskey">
         <zutaten>
             <zutat id="london-dry-gin" menge="30" />
             <zutat id="vermouth-sweet" menge="30" />
@@ -12,21 +12,21 @@
         </zutaten>
         </cocktail>
 
-        <cocktail id="gin-tonic" name="Gin &amp; Tonic" glas="long">
+        <cocktail id="gin-tonic" name="Gin &amp; Tonic" glass="long">
         <zutaten>
             <zutat id="london-dry-gin" menge="50" />
             <zutat id="tonic-water" menge="50" />
         </zutaten>
         </cocktail>
 
-        <cocktail id="martini" name="Martini" glas="martini">
+        <cocktail id="martini" name="Martini" glass="martini">
         <zutaten>
             <zutat id="london-dry-gin" menge="60" />
             <zutat id="vermouth-dry" menge="30" />
         </zutaten>
         </cocktail>
 
-        <cocktail id="manhattan" name="Manhattan" glas="manhattan">
+        <cocktail id="manhattan" name="Manhattan" glass="manhattan">
         <zutaten>
             <zutat id="whiskey-rye" menge="60" />
             <zutat id="vermouth-sweet" menge="30" />
@@ -34,7 +34,7 @@
         </zutaten>
         </cocktail>
 
-        <cocktail id="daiquiri" name="Daiquiri" glas="daiquiri">
+        <cocktail id="daiquiri" name="Daiquiri" glass="daiquiri">
         <zutaten>
             <zutat id="rum-white" menge="60" />
             <zutat id="lime-juice" menge="30" />
@@ -42,7 +42,7 @@
         </zutaten>
         </cocktail>
 
-        <cocktail id="dark-n-stormy" name="Dark 'n' Stormy" glas="cocktail">
+        <cocktail id="dark-n-stormy" name="Dark 'n' Stormy" glass="cocktail">
         <zutaten>
             <zutat id="rum-goslings-black-seal" menge="50" />
             <zutat id="beer-ginger" menge="150" />
@@ -75,7 +75,7 @@
         </zutaten>
         </cocktail>
 
-        <cocktail id="long-island-icetea" name="Long Island Icetea" glass="long">
+        <cocktail id="long-island-icetea" name="Long Island Iced Tea" glass="long">
         <zutaten>
             <zutat id="tequila-silver" menge="15" />
             <zutat id="vodka" menge="15" />
