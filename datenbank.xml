@@ -130,7 +130,8 @@
         <zutat id="rum-white" name="White Rum" />
         <zutat id="lime-juice" name="Lime Juice" />
         <zutat id="orange-juice" name="Orange Juice" />
-        <zutat id="cranberry-juice" name="Cranberry Juice" />        <zutat id="lemon-juice" name="Lemon Juice" />
+        <zutat id="cranberry-juice" name="Cranberry Juice" />        
+        <zutat id="lemon-juice" name="Lemon Juice" />
         <zutat id="syrup-simple" name="Simple Syrup" />
         <zutat id="rum-goslings-black-seal" name="Gosling's Black Seal Rum" />
         <zutat id="beer-ginger" name="Ginger Beer" />

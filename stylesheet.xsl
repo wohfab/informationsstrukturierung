@@ -6,20 +6,34 @@
 <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
 <html>
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"></link>
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script src="js/script.js"/>
     <title>Digitale Cocktailbar</title>
 </head>
 
 <body>
-    <h1>Die digitale Cocktailbar</h1>
-    <small>Ein Projekt im Rahmen des Moduls
-        <a href="https://ekvv.uni-bielefeld.de/sinfo/publ/modul/26802491" title="Modulbeschreibung - Informationsstrukturierung">
-            <strong>23-TXT-BaCl4 - Informationsstrukturierung</strong>
-        </a> an der Universität Bielefeld.</small>
+    <header>
+        <h1>Die digitale Cocktailbar</h1>
+        <small>Ein Projekt im Rahmen des Moduls
+            <a href="https://ekvv.uni-bielefeld.de/sinfo/publ/modul/26802491" title="Modulbeschreibung - Informationsstrukturierung">
+                <strong>23-TXT-BaCl4 - Informationsstrukturierung</strong>
+            </a> an der Universität Bielefeld.</small>
+        <div class="menu">
+            <a href="#site-doc">Dokumentation</a>
+            <a href="#site-cocktails">Cocktails</a>
+            <a href="#site-test">Test</a>
+        </div>
+    </header>
+
+    <div id="site-doc" class="site">
+    <h2>Dokumentation</h2>
+    <p>Dieses Projekt demonstriert die Informationsstrukturierung mithilfe der XSLT Transformation einer XML Datenbank.</p>
+    </div>
+
+    <div id="site-cocktails" class="site">
     <h2>Cocktails</h2>
     <ul id="cocktail-list" class="cocktail-list">
     <xsl:for-each select="//cocktail">
@@ -62,6 +76,12 @@
         </li>
     </xsl:for-each>
     </ul>
+    </div>
+
+    <div id="site-test" class="site">
+    <h2>Test</h2>
+    <p>Pariatur magna amet tempor pariatur cillum do esse ex adipisicing ullamco est proident excepteur. Elit ex minim sit consequat sint commodo non laboris est incididunt. Nostrud aute enim esse cupidatat pariatur ipsum irure nisi. Tempor id adipisicing qui proident non in dolore consectetur aliquip do incididunt fugiat. In officia voluptate dolore fugiat ullamco labore incididunt do in consectetur. Lorem aliquip ut non ad irure officia minim.</p>
+    </div>
 </body>
 </html>
 
