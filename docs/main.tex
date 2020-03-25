@@ -1,0 +1,149 @@
+\documentclass[a4paper,12pt,openany]{scrreprt}
+\usepackage[
+	left=2.5cm, 
+	right=4cm, 
+    top=2.5cm, 
+    bottom=2.8cm,
+    footskip=10mm,
+    headsep=5mm]{geometry}
+
+\usepackage[
+    colorlinks=true,
+    citecolor=black,
+    linkcolor=black,
+    menucolor=black,
+    urlcolor=black
+]{hyperref}
+
+\usepackage{dirtree} % docs: ftp.eq.uc.pt/software/TeX/macros/generic/dirtree/dirtree.pdf
+\usepackage{scrhack}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+%\graphicspath{{images/}}
+%\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{color}
+%\usepackage[table,dvipsnames]{xcolor}
+\usepackage{transparent}
+\usepackage[ngerman]{babel}
+\usepackage{lipsum}
+\usepackage{datetime2}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{calc}
+%\usepackage{subfig}
+\usepackage{csquotes}
+\MakeOuterQuote{"} 
+%T
+
+\usepackage{listings} %For code in appendix
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},   commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2,
+  extendedchars=true,
+  inputencoding=utf8,
+  literate=%
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+  {~}{{\textasciitilde}}1
+}
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+\AtBeginDocument{%
+  %\let\c@figure\c@lstlisting
+  \let\thefigure\thelstlisting
+  %\let\ftype@lstlisting\ftype@figure
+}
+
+\renewcommand{\lstlistingname}{Codeblock}% Listing -> Algorithm
+%\usepackage[nottoc,notlot,notlof]{tocbibind}
+
+\hypersetup{final}
+\begin{document}
+
+\pagestyle{empty}
+\include{formalia/title}
+
+\pagenumbering{Roman}
+
+%\addcontentsline{toc}{section}{Danksagung}\setcounter{page}{2}\include{formalia/danksagung}
+%\addcontentsline{toc}{section}{Abstract}\include{formalia/abstract}
+%\addcontentsline{toc}{section}{Table of Contents}
+\newpage
+\tableofcontents
+
+\newpage
+\let\LaTeXStandardClearpage\clearpage
+\let\clearpage\relax
+
+%\begin{spacing}{1.1}
+%\addcontentsline{toc}{section}{List of Figures/Tables}\listoffigures \listoftables
+%\include{formalia/abbreviations}
+%\end{spacing}
+
+%\addtocontents{toc}{\vspace{\normalbaselineskip}}
+%\addtocontents{toc}{\hrule}
+%\addtocontents{toc}{\vspace{\normalbaselineskip}}
+\let\clearpage\LaTeXStandardClearpage
+\newpage
+\pagenumbering{arabic}
+
+\newpage
+\include{includes/einleitung}
+\include{includes/dateien}
+\include{includes/fazit}
+
+%% ---------------------------------------%%
+
+%\pagestyle{plain}
+
+\addtocontents{toc}{\vspace{\normalbaselineskip}}
+\addtocontents{toc}{\hrule}
+\addtocontents{toc}{\vspace{\normalbaselineskip}}
+
+\pagenumbering{Roman}
+\bibliographystyle{apalike}
+\begin{doublespace}
+\bibliography{bacl4.bib}
+\end{doublespace}
+
+\addcontentsline{toc}{chapter}{Eigenständigkeitserklärung}
+\begin{doublespace}
+\include{formalia/declaration}
+\end{doublespace}
+
+%\addcontentsline{toc}{chapter}{Appendix}
+%\include{formalia/appendix}
+
+\end{document}

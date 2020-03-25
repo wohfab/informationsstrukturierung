@@ -1,0 +1,21 @@
+\chapter{Schluss-Erklärung und Ausblick}
+\label{chap:Schluss-Erklärung und Ausblick}
+
+% Ergebnisse zusammenfassen und bewerten - Beantworten der Fragen aus der Einleitung - Ausblick / Offene Fragen / Angrenzende Themengebiete
+% KEINE neuen Erkenntnisse / Thesen
+
+Wie in \ref{section:weiteredateien} beschrieben, wird aus der Datenbank \texttt{datenbank.xml} und dem Stylesheet \texttt{stylesheet.xsl} mithilfe der \texttt{XSL} Transformation die Datei \texttt{index.html} generiert.
+
+Die Transformation lässt sich beispielsweise mit dem Programm \texttt{xsltproc} (\href{http://xmlsoft.org/XSLT/xsltproc.html}{Dokumentation unter xmlsoft.org/XSLT/xsltproc.html}) über die Kommandozeile vornehmen.
+
+Befindet man sich mit der Kommandozeile im Wurzelverzeichnis dieses Projektes, ist der Transformations-Befehl wiefolgt:
+
+\begin{lstlisting}[language=bash, caption=\texttt{XSL} Transformation]
+xsltproc -o index.html stylesheet.xsl datenbank.xml
+\end{lstlisting}
+
+Zum Abschluss dieses Projektes möchte ich einen Ausblick geben über mögliche Erweiterungen dieses Projektes.
+
+Die Erweiterung der Datenbank um weitere Cocktails liegt auf der Hand. Zur Veranschaulichung der eingebauten Funktionalitäten befinden sich momentan zwölf Cocktail-Einträge und die dafür nötigen Zutaten in der Datenbank. Über eine Automatisierung ließen sich entsprechend auch größere Mengen an Cocktail-Rezepten in der Datenbank einpflegen.
+
+Eine Rechnung, die man in einem weiteren Projekt einbauen könnte, wäre ein Alkohol-Messer. Wenn man die Zutaten-Einträge in der Datenbank um den Wert des Alkohol-Gehaltes erweitert, so ließe sich aus der Gesamtmenge der Flüssigkeit innerhalb eines Cocktails und den entsprechenden Alkohol-Werten der Gesamt-Alkohol eines Cocktails errechnen.

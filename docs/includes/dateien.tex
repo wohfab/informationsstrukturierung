@@ -1,0 +1,424 @@
+\chapter{Dateien}
+\label{chap:dateien}
+\pagestyle{plain}
+
+Die folgenden Dateien befinden sich in dem vorliegenden Projekt. In diesem Kapitel werden die einzelnen Bestandteile und ihre Funktionen innerhalb des Projektes detailliert besprochen.
+
+Anmerkung: Die Dateien folgen nicht durchgehend den üblichen Einrückungs-Standards. Dies ist absichtlich so und hat den Grund, dass bei dem Anzeigen der Codeblöcke innerhalb der Dokumentations-Datei ansonsten Leerzeichen am Zeilenanfang (\texttt{leading whitespace}) mit angezeigt würden.
+
+\setlength{\DTbaselineskip}{20pt}
+\dirtree{%
+.1 /.
+  .2 datenbank.xml.
+  .2 schema.xsd.
+  .2 stylesheet.xsl.
+  .2 css/.
+    .3 main.css.
+  .2 js/.
+    .3 script.js.
+  .2 img/.
+    .3 glass-beach.svg.
+    .3 glass-cocktail.svg.
+    .3 glass-daiquiri.svg.
+    .3 glass-long.svg.
+    .3 glass-manhattan.svg.
+    .3 glass-martini.svg.
+    .3 glass-whiskey.svg.
+  .2 index.html.
+  .2 dokumentation.pdf.
+  .2 docs/.
+    .3 ....
+}
+
+\newpage
+\section{Die Datenbank - \texttt{datenbank.xml}}\label{section:datenbank}
+
+Die Datenbank ist das Herzstück des Projektes. Sie enthält alle Daten, die später weiterverarbeitet werden sollen. Zunächst werden im Kopfbereich der Datenbank-Datei die \texttt{XML} Version und das Text Encoding angegeben. Anschließend folgt die Angabe, unter welchem Dateipfad sich die Stylesheet \texttt{XSL} Datei für die spätere Transformation befindet.
+
+\lstinputlisting[language=XML, linerange={1-2}, caption=Datenbank - Header, label={code:datenbank-header}]{../datenbank.xml}
+
+
+
+
+
+Nach dem Header beginnt der Aufbau der eigentlichen Datenbank. Zunächst öffnen wir die Datenbank mit dem \texttt{<cocktailbar>} Tag (siehe Codeblock \ref{code:datenbank-beginn}). Im Anschluss findet sich in der Datenbank eine Liste der Cocktails, eingebettet in das \texttt{<cocktails>} Tag.
+
+Jeder einzelne Cocktail ist entsprechend in ein \texttt{<cocktail>} Tag eingefasst. Hier sehen wir die erste komplexere Einheit der Datenbank. Ein \texttt{cocktail} besteht aus drei Attributen, die sich im Start-Tag angeben lassen und einer Anzahl von Zutaten, die sich im \texttt{zutaten} Tag befinden. 
+
+Die Attribute sind die \texttt{id}, die jedem Cocktail einen eindeutigen Identifizierer zuordnet, der \texttt{name}, der die Normalschreibweise des Cocktail-Namens angibt und das \texttt{glass}, welches aus einer Liste möglicher Glas-Formen auswählt, in der der Cocktail im Normalfall zubereitet wird.
+
+Jede Zutat hat mindestens zwei Attribute. Wie auch der Cocktail zuerst eine \texttt{id}. Dann eine Mengenangabe im \texttt{menge} Attribut.
+
+\lstinputlisting[firstnumber=4, language=XML, linerange={4-14}, caption=Datenbank - Beginn, label={code:datenbank-beginn}]{../datenbank.xml}
+
+
+
+
+
+
+Standardmäßig wird die \texttt{menge} der Zutat in \texttt{ml} angegeben. Wenn eine andere Mengeneinheit gewünscht ist, kann diese durch ein entsprechendes drittes Attribut der Zutat hinzugefügt werden. Ein Beispiel ist in Zeile 64 im folgenden Codeblock \ref{code:abweichende-mengeneinheit} zu sehen. 
+
+\lstinputlisting[firstnumber=60, language=XML, linerange={60-66}, caption=Abweichende Mengeneinheit, label={code:abweichende-mengeneinheit}]{../datenbank.xml}
+
+
+
+
+
+Im Anschluss an die Cocktail-Liste befindet sich die Zutaten-Liste. Jede Zutat besitzt hier zwei Attribute. Wie die Cocktails auch jeweils eine \texttt{id} und das Attribut \texttt{name}, welches die Normalschreibweise der Zutat enthält. Zuletzt wird die Datenbank mit \texttt{</cocktailbar>} geschlossen.
+
+\lstinputlisting[firstnumber=109, language=XML, linerange={109-137}, caption=Zutatenliste, label={code:zutatenliste}]{../datenbank.xml}
+
+
+
+
+
+
+
+\section{Das Schema - \texttt{schema.xsd}}
+\label{section:schema}
+
+Die Schema-Datei stellt sicher, dass die Datenbank in \ref{section:datenbank} dem angegebenen Schema folgt.
+Gegen die Schema-Datei lässt sich die Datenbank validieren. Es kann also geprüft werden, ob die Datenbank richtig formatiert ist.
+Auf diese Weise können Fehler in der Datenbank vor der Transformation erkannt werden.
+
+Wie die Datenbank, beginnt auch das Schema mit einem Header (siehe \ref{code:schema-header}).
+
+\lstinputlisting[firstnumber=1, language=XML, linerange={1-2}, caption=Schema - Header, label={code:schema-header}]{../schema.xsd}
+
+
+
+
+
+
+Im Anschluss definieren wir im Schema die gesamte \texttt{cocktailbar} als Sequenz, die zum einen die \texttt{cocktails} und zum anderen die Liste der \texttt{zutaten} enthält.
+
+\lstinputlisting[firstnumber=4, language=XML, linerange={4-11}, caption=Schema - Cocktailbar, label={code:schema-cocktailbar}]{../schema.xsd}
+
+
+
+
+
+
+Sowohl die \texttt{cocktails} als auch die \texttt{zutaten} bestehen aus einem einzigen Element. Dies ist der einzelne \texttt{cocktail} und die einzelne \texttt{zutat}. Beide Elemente können beliebig oft vorkommen \texttt{maxOccurs}, müssen jedoch mindestens einmal vorhanden sein \texttt{minOccurs}.
+
+\lstinputlisting[firstnumber=13, language=XML, linerange={13-27}, caption=Schema - Cocktails \& Zutaten, label={code:schema-cocktails-zutaten}]{../schema.xsd}
+
+
+
+
+
+
+Anschließend definieren wir, was einen einzelnen \texttt{cocktail} ausmacht. Er besteht aus einer Reihe an Zutaten, die wir über \texttt{cocktailZutaten} definieren und drei Attribute. Die Attribute sind \texttt{id}, \texttt{name} und \texttt{glass}. Alle drei Attribute sind notwendig (\texttt{required}).
+
+Die \texttt{id} wird zusätzlich über den \texttt{xs:unique}-Eintrag spezifiziert, sodass jede \texttt{id} nur einmalig vergeben werden kann. Dies ist besonders wichtig, da wir im späteren Verlauf auf einzelne Cocktails verweisen möchten. Wäre die Möglichkeit gegeben, dass mehrere Cocktails dieselbe \texttt{id} besäßen, könnten wir nicht eindeutig auf einen spezifischen Cocktail referieren.
+
+\lstinputlisting[firstnumber=29, language=XML, linerange={29-42}, caption=Schema - Cocktail, label={code:schema-cocktail}]{../schema.xsd}
+
+
+
+
+
+
+Selbige Definition nehmen wir nun für die einzelne \texttt{zutat} vor. Einziger Unterschied ist der, dass die \texttt{zutat} ein Attribut weniger hat. Es fehlt das \texttt{glass}-Attribut, welches beim \texttt{cocktail} dafür zuständig ist, festzulegen, welches Glas für den Cocktail genutzt werden soll.
+
+\lstinputlisting[firstnumber=44, language=XML, linerange={44-57}, caption=Schema - Zutat, label={code:schema-zutat}]{../schema.xsd}
+
+
+
+
+
+
+Auf der zweitkleinsten Ebene widmen wir uns nun den Zutaten, die in einem Cocktail zufinden sind (\texttt{cocktailZutaten}). Die Cocktail-Zutatenliste besteht aus beliebig vielen jedoch mindestens einer \texttt{cocktailZutat}.
+
+\lstinputlisting[firstnumber=59, language=XML, linerange={59-65}, caption=Schema - Cocktailzutaten, label={code:schema-cocktailzutaten}]{../schema.xsd}
+
+
+
+
+
+
+Die kleineste Ebene ist die einzelne \texttt{cocktailZutat}. Diese besteht aus maximal drei Attributen. Diese sind wieder eine \texttt{id} und zusätzlich eine Mengenangabe und eine Angabe zur Mengeneinheit. \texttt{id} und \texttt{menge} sind Pflichtangaben. Die Angabe der \texttt{einheit} ist \texttt{optional}. Warum dies so ist, klärt sich in Kapitel \ref{section:stylesheet}.
+
+Bis zu diesem Punkt waren allen Attribute vom Typ \texttt{xs:string}; also simple Zeichenketten. Nun haben wir eine Abweichung, da die \texttt{menge} vom Typ \texttt{xs:int} ist.
+
+\lstinputlisting[firstnumber=67, language=XML, linerange={67-77}, caption=Schema - Cocktailzutat, label={code:schema-cocktailzutat}]{../schema.xsd}
+
+Nachdem alle in der Datenbank genutzten Elemente im Schema definiert wurden, wird die Schema-Datei mit \texttt{</xs:schema>} geschlossen. Im nächsten Abschnitt widmen wir uns dem Stylesheet.
+
+
+
+
+
+\section{Das Stylesheet - \texttt{stylesheet.xsl}}
+\label{section:stylesheet}
+
+Bei dem Stylesheet handelt es sich um die Datei, die aus der Datenbank mithilfe von XSL Transformation eine neue Datei erzeugen kann; in unserem Fall eine \texttt{HTML}-Datei. Sie beinhaltet \texttt{XSL}-Code und \texttt{HTML}-Blöcke. 
+
+Würden wir nur \texttt{HTML} nutzen, so müssten wir unsere Datenbank direkt in die Ausgabe-Datei schreiben (\textit{hard-coden}). Durch Nutzung der XSL Transformation können wir die Semantik (Stylesheet) unserer Datei unabhängig vom Inhalt (Datenbank - Abschnitt \ref{section:datenbank}) gestalten und so zu einem späteren Zeitpunkt die Datenbank um Einträge erweitern, ohne die Stylesheet-Datei bearbeiten zu müssen.
+
+Erneut starten wir mit dem Kopfbereich. Hier werden die \texttt{XML}-Version und ein Link zum \texttt{XML Namespace} angegeben. Darauf folgt die Angabe, dass der \texttt{output} unserer Transformation in \texttt{HTML} geschehen soll. Zuletzt wird über \texttt{xsl:template match} festgelegt, welches Element der Datenbank als Start-Element für spätere Angaben genutzt werden soll. In diesem Fall nutzen wir das Wurzelelement \texttt{/}. Würden wir mit einer umfangreicheren Datenbank und einer komplexeren Ausgabe-Datei arbeiten wollen, könnte es hier sinnvoll sein, einen kleineren Bereich der Datenbank anzusprechen, um eine bessere Übersicht zu garantieren.
+
+\lstinputlisting[firstnumber=1, language=XSLT, linerange={1-4}, caption=Stylesheet - Header, label={code:stylesheet-header}]{../stylesheet.xsl}
+
+
+
+
+
+
+Im nächsten Codeblock beginnen wir, \texttt{HTML}-Code in unser Stylesheet einzubauen. Zunächst setzen wir mit \texttt{<!DOCTYPE html>} fest, dass wir im weiteren Verlauf HTML 5 nutzen möchten. Anschließend öffnen wir die \texttt{<html>}- und \texttt{<head>}-Tags.
+
+Zwischen \texttt{<head>...</head>} stehen Meta-Informationen, die später nicht auf der Website selber angezeigt werden sollen. Dazu gehört die Angabe zum Encoding \texttt{charset="UTF-8"}, sodass wir unter anderem keine Probelem mit Umlauten bekommen, und der Seiten-Titel \text{<title>}, der später im Web-Browser im Tab als Titel angezeigt wird. 
+
+Außerdem werden hier zusätziche Dateien verlinkt, die wir zur grafischen Anpassung unserer Website benötigen. Zum einen ist dies \texttt{main.css}, die \texttt{CSS}-Datei, die die Gestaltung festlegt und zum anderen ist dies die Datei \texttt{script.js}, in der Javascript-Skripte gespeichert werden können, um die Funktionalität etwaiger Animationen zu gewährleisten. (Anmerkung: Letztere Datei wird zur Zeit nicht genutzt - befindet sich für den Fall der Projekt-Erweiterung aber weiterhin im Projektordner).
+
+Die zwei \texttt{meta}-Einträge dienen der Responsivität der Website-Darstellung. Damit wird gewährleistet, dass unsere Ausgabedatei nicht auf ein fixes Format festgelegt ist sondern auf allen Bildschirmen grafisch ansprechend angezeigt werden kann. Wie dies genau passiert, wird im Abschnitt \ref{section:css} ausgeführt.
+
+\lstinputlisting[firstnumber=6, language=XSLT, linerange={6-15}, caption=Stylesheet - Head, label={code:stylesheet-head}]{../stylesheet.xsl}
+
+
+
+
+
+
+
+
+Nachdem der \texttt{<head>}-Bereich geschlossen wurde, öffnen wir den \texttt{<body>}; also den Bereich, der am Ende im Web-Browser dargestellt wird. Der \texttt{<body>} unterteilt sich im vorliegenden Projekt in drei Teile. Den \texttt{<header>} und zwei \texttt{<div>}-Elemente, die jeweils eine "Seite" repräsentieren. Dazu mehr in den Codeblöcken \ref{code:stylesheet-body-site-doku} ff.
+
+Der \texttt{<header>} beinhaltet die Seitenüberschrift \texttt{<h1>}, den Untertitel \texttt{<small>} und die Menüleiste \texttt{<div class=''menu''>}. Das Menü verlinkt jeweils zu den Seiten \texttt{Dokumentation} und \texttt{Cocktails}.
+
+\lstinputlisting[firstnumber=18, language=XSLT, linerange={18-28}, caption=Stylesheet - Body - Header, label={code:stylesheet-body-header}]{../stylesheet.xsl}
+
+
+
+
+
+
+
+
+Die Seite \texttt{Dokumentation} beinhaltet lediglich einen kurzen Einführungstext und den Link zu dieser Dokumentation.
+
+\lstinputlisting[firstnumber=30, language=XSLT, linerange={30-34}, caption=Stylesheet - Body - Seite - Dokumentation, label={code:stylesheet-body-site-doku}]{../stylesheet.xsl}
+
+
+
+
+
+
+Die Seite \texttt{Cocktails} enthält nun die gesamte Logik, die aus der Datenbank unsere Ausgabedatei erzeugen kann. Entsprechend werde ich diesen Abschnitt in kleinere Teile aufteilen.
+
+Wir starten mit einem \texttt{<div>}-Tag, welches eine \texttt{id} enthält, um die Seite über die Menüleiste ansteuern zu können. Nach der Überschrift \texttt{<h2>} folgt der Kern der Cocktail-Liste. Bei diesem handelt es sich um eine ungeordnete Liste \texttt{<ul>}. Die \texttt{id} und \texttt{class} werden später beim Styling der Website genutzt. (Siehe \nameref{section:css})
+
+\renewcommand{\figurename}{Codeblock}
+\renewcommand{\thefigure}{2.16}
+\begin{figure}[H]
+\label{code:stylesheet-body-site-cocktails-liste}
+
+\lstinputlisting[firstnumber=36, language=XSLT, linerange={36-38}, label={code:stylesheet-body-site-cocktails-start}]{../stylesheet.xsl}
+
+$\vdots$
+
+\lstinputlisting[firstnumber=78, language=XSLT, linerange={78-79}, label={code:stylesheet-body-site-cocktails-end}]{../stylesheet.xsl}
+
+\caption{Stylesheet - Body - Seite - Cocktails - Liste}
+\end{figure}
+
+% hidden figure to keep the numbering of listings and figures consistent.
+\begin{figure}[ht]\centering\resizebox{!}{0cm}{\begin{minipage}{\textwidth}\lstinputlisting[linerange=1-2, caption=.]{../stylesheet.xsl}\end{minipage}}\end{figure}
+\vspace*{-1.2cm}
+
+
+
+
+Nun wird für jeden Cocktail aus der Datenbank (\texttt{for-each} ... \texttt{cocktail}) ein Listen-Eintrag \texttt{li} angelegt.
+
+\renewcommand{\thefigure}{2.17}
+\begin{figure}[H]
+\label{code:stylesheet-body-site-cocktails-for-each}
+
+\lstinputlisting[firstnumber=39, language=XSLT, linerange={39-40}, label={code:stylesheet-body-site-cocktails-start}]{../stylesheet.xsl}
+
+$\vdots$
+
+\lstinputlisting[firstnumber=76, language=XSLT, linerange={76-77}, label={code:stylesheet-body-site-cocktails-for-each}]{../stylesheet.xsl}
+
+\caption{Stylesheet - Body - Seite - Cocktails - for-each}
+\end{figure}
+
+% hidden figure to keep the numbering of listings and figures consistent.
+\begin{figure}[ht]\centering\resizebox{!}{0cm}{\begin{minipage}{\textwidth}\lstinputlisting[linerange=1-2, caption=.]{../stylesheet.xsl}\end{minipage}}\end{figure}
+%\vspace*{-1.2cm}
+
+
+
+
+
+
+Jeder dieser Einträge in der Liste besteht nun aus mehreren Teilen. Zuerst wird der \texttt{name} des Cocktails aus der Datenbank entnommen und als Überschrift verwendet. Dies ist zu sehen in Zeile 42. Von jedem Cocktail (siehe vorheriger Codeblock) wird das Attribut \texttt{name} gewählt (\texttt{select} ... \texttt{@name}). Wir betten den Namen in \texttt{<div>}-Tags ein und vergeben die Klasse \texttt{cocktail-name}, um später die Gestaltung anpassen zu können.
+
+\lstinputlisting[firstnumber=41, language=XSLT, linerange={41-42}, caption=Stylesheet - Body - Seite - Cocktails - Name, label={code:stylesheet-body-site-cocktails-namew}]{../stylesheet.xsl}
+
+
+
+
+
+
+
+
+
+Bei dem nächsten Abschnitt handelt es sich wieder um eine \texttt{for}-Schleife. Dieses mal iterieren wir über die Zutaten in der Zutatenliste eines jeden Cocktails. Wir befinden uns also in einer Schleife innerhalb einer Schleife. Für jede Zutat innerhalb des aktuellen Cocktails, wird nun in der ungeordneten Liste \texttt{ingredient-list} ein Listen-Eintrag \texttt{li} erstellt.
+
+\renewcommand{\thefigure}{2.19}
+\begin{figure}[H]
+\label{code:stylesheet-body-site-cocktails-for-each}
+
+\lstinputlisting[firstnumber=43, language=XSLT, linerange={43-45}, label={code:stylesheet-body-site-cocktails-info-start}]{../stylesheet.xsl}
+
+$\vdots$
+
+\lstinputlisting[firstnumber=76, language=XSLT, linerange={67-69}, label={code:stylesheet-body-site-cocktails-info-end}]{../stylesheet.xsl}
+
+\caption{Stylesheet - Body - Seite - Cocktails - Zutaten}
+\end{figure}
+
+% hidden figure to keep the numbering of listings and figures consistent.
+\begin{figure}[ht]\centering\resizebox{!}{0cm}{\begin{minipage}{\textwidth}\lstinputlisting[linerange=1-2, caption=.]{../stylesheet.xsl}\end{minipage}}\end{figure}
+\vspace*{-1.2cm}
+
+
+
+
+
+
+
+Im folgenden Codeblock nutzen wir eine Variable \texttt{xsl:variable}, um die \texttt{id} der aktuellen Zutat zwischenzuspeichern. Diese \texttt{id} wird dann innerhalb einer \texttt{for}-Schleife, die über alle Zutaten aus der Datenbank iteriert, dafür genutzt, um abzufragen, ob die gespeicherte \texttt{id} mit der \texttt{id} der abgefragten Zutat übereinstimmt (\texttt{if test}). Ist dies der Fall, wird der vollständige Name der Zutat \texttt{@name} ausgegeben.
+
+\lstinputlisting[firstnumber=46, language=XSLT, linerange={46-51}, caption=Stylesheet - Body - Seite - Cocktails - Zutat, label={code:stylesheet-body-site-cocktails-zutat}]{../stylesheet.xsl}
+
+
+
+
+
+Nun suchen wir die Menge der ausgewählten Zutat. Hier ergibt sich eine weitere Besonderheit. Wie in Codeblock \ref{code:schema-cocktailzutat} angegeben war, handelt es sich bei der Mengeneinheit um ein optionales Attribut. Der folgende Codeblock zeigt ein verschachteltes \texttt{choose X when Y; otherwise Z} Element. Ist keine Mengeineinheit über das \texttt{menge}-Attribut in der Zutat angegeben, wird auf die festgelegte Einheit \texttt{ml} zurückgegriffen. Ansonsten wird über das Attribut \texttt{einheit} die entsprechende Einheit aus dem Attribut extrahiert und dargestellt.
+
+Auf diese Weise konnten wir in der Datenbank die Mengeneinheit \texttt{ml} auslassen. Da dies die übliche Einheit ist, sparen wir uns somit repetitives Eingeben.
+
+\lstinputlisting[firstnumber=52, language=XSLT, linerange={52-66}, caption=Stylesheet - Body - Seite - Cocktails - Zutat - Menge \& Einheit, label={code:stylesheet-body-site-cocktails-mengeneinheit}]{../stylesheet.xsl}
+
+
+
+
+
+
+
+Zuletzt stellen wir das Cocktail-Glas dar. Hierzu betten wir in \texttt{<img>}-Tags das jeweils passende Bild ein, welches sich im Bilder-Ordner befindet. Hierzu nutzen wir das Attribut \texttt{glass} des derzeit in der Schleife aktiven Glases.
+
+Bei den Bildern handelt es sich um \texttt{.svg}-Dateien, um die Dateigröße möglichst gering zu halten. Außerdem sind \texttt{.svg}-Dateien Vektorgrafiken, die den Vorteil haben, sich beliebig skalieren zu lassen. So kann auch eine sehr kleine Datei auf einem sehr großen Bildschirm scharf dargestellt werden.
+
+\lstinputlisting[firstnumber=71, language=XSLT, linerange={71-75}, caption=Stylesheet - Body - Seite - Cocktails - Glas, label={code:stylesheet-body-site-cocktails-glas}]{../stylesheet.xsl}
+
+
+
+
+
+
+
+\section{Cascading Stylesheet - \texttt{css/main.css}}
+\label{section:css}
+
+Die \texttt{.css}-Datei, das sogenannte \texttt{Cascading StyleSheet}, wird genutzt, um Elemente der \texttt{HTML}-Seite grafisch anzupassen. Über diese Datei lassen sich unter anderem Schriftarten, -größen, -farben und weitere Parameter, wie Seitenränder und Zeilenabstände, anpassen.
+
+Im Folgenden werde ich die relevanten Abschnitte der Datei beschreiben.
+
+Zuerst werden externe Schriftarten importiert. Diese sind lizenzfrei zugänglich über \href{https://fonts.google.com}{\texttt{fonts.google.com}}.
+
+\lstinputlisting[firstnumber=1, language=HTML, linerange={1-1}, caption=CSS - Schriftart, label={code:css-font}]{../css/main.css}
+
+
+
+Anschließend definieren wir einige Variablen, um Schriftarten und Farben im späteren Verlauf der Datei wiederverwenden zu können.
+
+\lstinputlisting[firstnumber=3, language=HTML, linerange={3-11}, caption=CSS - Variablen, label={code:css-variables}]{../css/main.css}
+
+
+
+Die nächsten Zeilen sind entscheidend für die Menüführung der Website. Wenn der Codeblock nicht vorhanden wäre, würde die einzelnen "Seiten" (Dokumentation, Cocktails) untereinander angezeigt. Durch das Ansteuern der Pseudoklasse \texttt{:target}, die die aktuell aktive Seite definiert, können wir alle anderen Seiten aus- und nur die aktive Seite einblenden.
+
+\lstinputlisting[firstnumber=13, language=HTML, linerange={13-18}, caption=CSS - Tabs, label={code:css-tabs}]{../css/main.css}
+
+
+
+In einer \texttt{CSS}-Datei können auf verschiedene Arten die einzelnen Seiten-Elemente angesteuert werden. Im nächsten Codeblock ist die Variante dargestellt, die ein Element über den Element-Typ ansteuert. Dies geschieht, indem der rein Name des Tags angegeben wird. Hier: \texttt{body}.
+
+Über Attribut-Wert-Paare können nun die Eigenschaften der vorher ausgewählten Elemente geändert werden. Die Angaben \texttt{var(--XYZ)} verweisen hier auf die in Codeblock \ref{code:css-variables} angelegten Variablen. Auf diese Art kann über das Ändern des Variablen-Werts die gesamte Seite angepasst werden.
+
+\lstinputlisting[firstnumber=20, language=HTML, linerange={20-26}, caption=CSS - Body, label={code:css-body}]{../css/main.css}
+
+
+
+
+Eine andere Art des Ansteuerns ist, die \texttt{CSS}-Klassen der Elemente zu nutzen. Wie in Abschnitt \ref{section:stylesheet} bereits mehrfach erwähnt, wurden einzelnen Elementen Klassen zugeordnet. Diese können in der \texttt{CSS}-Datei über das Voranstellen eines Punktes angesteuert werden. Hier: \texttt{.menu}.
+
+Außerdem können genauere Verschachtelungen von Elementen mithilfe der Schreibweise \texttt{X > Y} angesteuert werden. Im vorliegenden Beispiel werden alle Verweise (Anchor) \texttt{a} grafisch verändert; jedoch nur, wenn sie sich unterhalb eines Elementes mit der Klasse \texttt{menu} befinden.
+
+\lstinputlisting[firstnumber=44, language=HTML, linerange={44-51}, caption=CSS - Menü-Links, label={code:css-menulinks}]{../css/main.css}
+
+
+
+
+
+Die folgenden Codeblöcke zeigen stellen die Responsivität der Website sicher. Dabei wird das moderne \texttt{CSS-Grid} genutzt. Im ersten Teil werden die Elemente der Klasse \texttt{cocktail-list} bearbeitet. Die interessante Einheit befindet sich in Zeile 65. Das Attribut-Wert-Paar \texttt{grid-template-columns: repeat(1, 1fr)} gibt an, dass ein Ein-Spalten-Raster genutzt wird, in dem jede Spalte (also eine) den selben Platz einnimmt (\texttt{repeat(1, 1fr)}). \texttt{fr} steht hier für \textit{Fraction}; zu deutsch \textit{Teil}.
+
+Ab Zeile 75 beginnen nun die sogenannten \texttt{media-queries}. Der Web-Browser nutzt die Informationen über die Fenster-Größe aus, um für unterschiedliche Fenster-Größen andere Angaben zu machen.
+
+Im vorliegenden Beispiel nutzen wir drei sogenannte \texttt{break-points}, also Größen, an denen sich die Darstellung der Website verändert. Hier handelt es sich um die Größen \texttt{600px-1199px}, \texttt{1200px-1799px} und \texttt{$\geq$1800px}. Die Größe \texttt{<600px} ist implizit durch die ersten Zeilen abdegeckt.
+
+Respektive erhöhen wir hier die Zahlen der Spalten in unserem Raster von einer Spalte auf vier Spalten im größten Raster. Auf diese Weise können wir Bildschirme aller Größen unterstützen.
+
+\lstinputlisting[firstnumber=63, language=HTML, linerange={63-67}]{../css/main.css}
+
+$\vdots$
+
+\lstinputlisting[firstnumber=75, language=HTML, linerange={75-89}, caption=CSS - Media-Queries, label={code:css-media-queries}]{../css/main.css}
+
+
+
+
+
+
+Zum Ende der Datei definieren wir die Bewegungs-Animation der Glas-Bilder, die aktiviert wird, wenn der Mauszeiger über einem Bild verharrt (\texttt{:hover}).
+
+\lstinputlisting[firstnumber=115, language=HTML, linerange={115-121}, caption=CSS - Menü-Links, label={code:css-menulinks}]{../css/main.css}
+
+
+
+\section{Weitere Dateien}
+\label{section:weiteredateien}
+
+Abzüglich der bisher beschriebenen Dateien bleiben uns noch ein paar Dateien übrig, wie aus dem nachfolgenden reduzierten Datei-Baum erkennbar wird.
+
+\setlength{\DTbaselineskip}{20pt}
+\dirtree{%
+.1 /.
+  .2 js/.
+    .3 script.js.
+  .2 img/.
+    .3 glass-beach.svg.
+    .3 glass-cocktail.svg.
+    .3 glass-daiquiri.svg.
+    .3 glass-long.svg.
+    .3 glass-manhattan.svg.
+    .3 glass-martini.svg.
+    .3 glass-whiskey.svg.
+  .2 index.html.
+  .2 dokumentation.pdf.
+  .2 docs/.
+    .3 ....
+}
+
+Wie in Kapitel \ref{section:schema} (Codeblock \ref{code:stylesheet-head}) bereits erwähnt, handelt es sich bei \texttt{js/script.js} derzeit um eine leere Datei. Sie ist dafür gedacht, um \texttt{javascript}-Skripte in die Website einzubinden und so zum Beispiel komplexere Animationen zu ermöglichen.
+
+Im Ordner \texttt{/img} befinden sich die \texttt{.svg}-Dateien der Cocktail-Gläser, die in Codeblock \ref{code:stylesheet-body-site-cocktails-glas} genutzt werden.
+
+\texttt{index.html} ist die Website-Datei, die durch die \texttt{XSL} Transformation der Datenbank und des Stylesheets generiert wird. Sie ist die Ausgabe-Datei, in der die generierte Cocktail-Liste dargestellt wird.
+
+Bei der Datei \texttt{dokumentation.pdf} handelt es sich um diese Dokumentation. Sie wird aus den Dateien in \texttt{/docs} generiert. 

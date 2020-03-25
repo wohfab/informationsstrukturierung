@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 <xs:element name="cocktailbar">
   <xs:complexType>
     <xs:sequence>
-      <xs:element name="cocktails" maxOccurs="1"/>
-      <xs:element name="glaeser" maxOccurs="1"/>
-      <xs:element name="zutaten" maxOccurs="1"/>
+      <xs:element ref="cocktails"/>
+      <xs:element ref="zutaten"/>
     </xs:sequence>
   </xs:complexType>
 </xs:element>
@@ -14,8 +13,66 @@
 <xs:element name="cocktails">
   <xs:complexType>
     <xs:sequence>
-      <xs:element name="cocktail" maxOccurs="unbounded"/>
+      <xs:element ref="cocktail" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="zutaten">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="zutat" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="cocktail">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="cocktailZutaten"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="required"/>
+    <xs:attribute type="xs:string" name="name" use="required"/>
+    <xs:attribute type="xs:string" name="glass" use="required"/>
+  </xs:complexType>
+  <xs:unique name="cocktail-id">
+    <xs:selector xpath="cocktail"/>
+    <xs:field xpath="@id"/>
+  </xs:unique>
+</xs:element>
+
+<xs:element name="zutat">
+  <xs:complexType>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="required"/>
+        <xs:attribute type="xs:string" name="name" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:unique name="zutat-id">
+    <xs:selector xpath="zutat"/>
+    <xs:field xpath="@id"/>
+  </xs:unique>
+</xs:element>
+
+<xs:element name="cocktailZutaten">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="cocktailZutat" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="cocktailZutat">
+  <xs:complexType>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="required"/>
+        <xs:attribute type="xs:int" name="menge" use="required"/>
+        <xs:attribute type="xs:string" name="einheit" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
   </xs:complexType>
 </xs:element>
 

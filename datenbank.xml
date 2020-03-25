@@ -3,140 +3,137 @@
 
 <cocktailbar>
 
-    <cocktails>
-        <cocktail id="negroni" name="Negroni" glass="whiskey">
-        <zutaten>
-            <zutat id="london-dry-gin" menge="30" />
-            <zutat id="vermouth-sweet" menge="30" />
-            <zutat id="campari" menge="30" />
-        </zutaten>
-        </cocktail>
+<cocktails>
+  <cocktail id="negroni" name="Negroni" glass="whiskey">
+  <cocktailZutaten>
+    <cocktailZutat id="london-dry-gin" menge="30" />
+    <cocktailZutat id="vermouth-sweet" menge="30" />
+    <cocktailZutat id="campari" menge="30" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="gin-tonic" name="Gin &amp; Tonic" glass="long">
-        <zutaten>
-            <zutat id="london-dry-gin" menge="50" />
-            <zutat id="tonic-water" menge="50" />
-        </zutaten>
-        </cocktail>
+  <cocktail id="gin-tonic" name="Gin &amp; Tonic" glass="long">
+  <cocktailZutaten>
+    <cocktailZutat id="london-dry-gin" menge="50" />
+    <cocktailZutat id="tonic-water" menge="50" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="martini" name="Martini" glass="martini">
-        <zutaten>
-            <zutat id="london-dry-gin" menge="60" />
-            <zutat id="vermouth-dry" menge="30" />
-        </zutaten>
-        </cocktail>
+  <cocktail id="martini" name="Martini" glass="martini">
+  <cocktailZutaten>
+    <cocktailZutat id="london-dry-gin" menge="60" />
+    <cocktailZutat id="vermouth-dry" menge="30" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="manhattan" name="Manhattan" glass="manhattan">
-        <zutaten>
-            <zutat id="whiskey-rye" menge="60" />
-            <zutat id="vermouth-sweet" menge="30" />
-            <zutat id="angostura-bitters" menge="2" einheit="Spritzer" />
-        </zutaten>
-        </cocktail>
+  <cocktail id="manhattan" name="Manhattan" glass="manhattan">
+  <cocktailZutaten>
+    <cocktailZutat id="whiskey-rye" menge="60" />
+    <cocktailZutat id="vermouth-sweet" menge="30" />
+    <cocktailZutat id="angostura-bitters" menge="2" einheit="Spritzer" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="daiquiri" name="Daiquiri" glass="daiquiri">
-        <zutaten>
-            <zutat id="rum-white" menge="60" />
-            <zutat id="lime-juice" menge="30" />
-            <zutat id="syrup-simple" menge="25" />
-        </zutaten>
-        </cocktail>
+  <cocktail id="daiquiri" name="Daiquiri" glass="daiquiri">
+  <cocktailZutaten>
+    <cocktailZutat id="rum-white" menge="60" />
+    <cocktailZutat id="lime-juice" menge="30" />
+    <cocktailZutat id="syrup-simple" menge="25" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="dark-n-stormy" name="Dark 'n' Stormy" glass="cocktail">
-        <zutaten>
-            <zutat id="rum-goslings-black-seal" menge="50" />
-            <zutat id="beer-ginger" menge="150" />
-        </zutaten>
-        </cocktail>
+  <cocktail id="dark-n-stormy" name="Dark 'n' Stormy" glass="cocktail">
+  <cocktailZutaten>
+    <cocktailZutat id="rum-goslings-black-seal" menge="50" />
+    <cocktailZutat id="beer-ginger" menge="150" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="margarita" name="Margarita" glass="daiquiri">
-        <zutaten>
-            <zutat id="tequila-silver" menge="60" />
-            <zutat id="cointreau" menge="30" />
-            <zutat id="lime-juice" menge="30" />
-        </zutaten>
-        </cocktail>
+  <cocktail id="margarita" name="Margarita" glass="daiquiri">
+  <cocktailZutaten>
+    <cocktailZutat id="tequila-silver" menge="60" />
+    <cocktailZutat id="cointreau" menge="30" />
+    <cocktailZutat id="lime-juice" menge="30" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="tequila-sunrise" name="Tequila Sunrise" glass="long">
-        <zutaten>
-            <zutat id="tequila-silver" menge="45" />
-            <zutat id="orange-juice" menge="120" />
-            <zutat id="grenadine" menge="1" einheit="Schuss" />
-        </zutaten>
-        </cocktail>
+<cocktail id="tequila-sunrise" name="Tequila Sunrise" glass="long">
+<cocktailZutaten>
+  <cocktailZutat id="tequila-silver" menge="45" />
+  <cocktailZutat id="orange-juice" menge="120" />
+  <cocktailZutat id="grenadine" menge="1" einheit="Schuss" />
+</cocktailZutaten>
+</cocktail>
 
-        <cocktail id="mai-tai" name="Mai Tai" glass="cocktail">
-        <zutaten>
-            <zutat id="rum-white" menge="40" />
-            <zutat id="rum-dark" menge="20" />
-            <zutat id="curacao-orange" menge="15" />
-            <zutat id="syrup-orgeat" menge="15" />
-            <zutat id="lime-juice" menge="10" />
-        </zutaten>
-        </cocktail>
+  <cocktail id="mai-tai" name="Mai Tai" glass="cocktail">
+  <cocktailZutaten>
+    <cocktailZutat id="rum-white" menge="40" />
+    <cocktailZutat id="rum-dark" menge="20" />
+    <cocktailZutat id="curacao-orange" menge="15" />
+    <cocktailZutat id="syrup-orgeat" menge="15" />
+    <cocktailZutat id="lime-juice" menge="10" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="long-island-icetea" name="Long Island Iced Tea" glass="long">
-        <zutaten>
-            <zutat id="tequila-silver" menge="15" />
-            <zutat id="vodka" menge="15" />
-            <zutat id="rum-white" menge="15" />
-            <zutat id="triple-sec" menge="15" />
-            <zutat id="gin" menge="15" />
-            <zutat id="lemon-juice" menge="25" />
-            <zutat id="syrup-gomme" menge="30" />
-            <zutat id="cola" menge="1" einheit="Schuss" />
-        </zutaten>
-        </cocktail>
+  <cocktail id="long-island-icetea" name="Long Island Iced Tea" glass="long">
+  <cocktailZutaten>
+    <cocktailZutat id="tequila-silver" menge="15" />
+    <cocktailZutat id="vodka" menge="15" />
+    <cocktailZutat id="rum-white" menge="15" />
+    <cocktailZutat id="triple-sec" menge="15" />
+    <cocktailZutat id="gin" menge="15" />
+    <cocktailZutat id="lemon-juice" menge="25" />
+    <cocktailZutat id="syrup-gomme" menge="30" />
+    <cocktailZutat id="cola" menge="1" einheit="Schuss" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="sex-on-the-beach" name="Sex on the Beach" glass="beach">
-        <zutaten>
-            <zutat id="vodka" menge="40" />
-            <zutat id="peach-schnapps" menge="20" />
-            <zutat id="orange-juice" menge="40" />
-            <zutat id="cranberry-juice" menge="40" />
-        </zutaten>
-        </cocktail>
+  <cocktail id="sex-on-the-beach" name="Sex on the Beach" glass="beach">
+  <cocktailZutaten>
+    <cocktailZutat id="vodka" menge="40" />
+    <cocktailZutat id="peach-schnapps" menge="20" />
+    <cocktailZutat id="orange-juice" menge="40" />
+    <cocktailZutat id="cranberry-juice" menge="40" />
+  </cocktailZutaten>
+  </cocktail>
 
-        <cocktail id="cuba-libre" name="Cuba Libre" glass="cocktail">
-        <zutaten>
-            <zutat id="cola" menge="120" />
-            <zutat id="rum-dark" menge="50" />
-            <zutat id="lime-juice" menge="10" />
-        </zutaten>
-        </cocktail>
-    </cocktails>
-
-
-    <glaeser></glaeser>
-    
-    <zutaten>
-        <zutat id="london-dry-gin" name="London Dry Gin" />
-        <zutat id="gin" name="Gin" />
-        <zutat id="vermouth-sweet" name="Sweet Vermouth" />
-        <zutat id="vermouth-dry" name="Dry Vermouth" />
-        <zutat id="campari" name="Campari" />
-        <zutat id="syrup-gomme" name="Gomme Syrup" />
-        <zutat id="syrup-orgeat" name="Orgeat Syrup" />
-        <zutat id="peach-schnapps" name="Peach Schnapps" />
-        <zutat id="curacao-orange" name="Orange Curacao" />
-        <zutat id="grenadine" name="Grenadine" />
-        <zutat id="triple-sec" name="Triple Sec" />
-        <zutat id="rum-dark" name="Dark Rum" />
-        <zutat id="vodka" name="Vodka" />
-        <zutat id="cola" name="Cola" />
-        <zutat id="tonic-water" name="Tonic Water" />
-        <zutat id="angostura-bitters" name="Angostura Bitter" />
-        <zutat id="whiskey-rye" name="Rye Whiskey" />
-        <zutat id="rum-white" name="White Rum" />
-        <zutat id="lime-juice" name="Lime Juice" />
-        <zutat id="orange-juice" name="Orange Juice" />
-        <zutat id="cranberry-juice" name="Cranberry Juice" />        
-        <zutat id="lemon-juice" name="Lemon Juice" />
-        <zutat id="syrup-simple" name="Simple Syrup" />
-        <zutat id="rum-goslings-black-seal" name="Gosling's Black Seal Rum" />
-        <zutat id="beer-ginger" name="Ginger Beer" />
-        <zutat id="tequila-silver" name="Silver Tequila" />
-        <zutat id="cointreau" name="Cointreau" />
-    </zutaten>
+  <cocktail id="cuba-libre" name="Cuba Libre" glass="cocktail">
+  <cocktailZutaten>
+    <cocktailZutat id="cola" menge="120" />
+    <cocktailZutat id="rum-dark" menge="50" />
+    <cocktailZutat id="lime-juice" menge="10" />
+  </cocktailZutaten>
+  </cocktail>
+</cocktails>
+  
+<zutaten>
+  <zutat id="london-dry-gin" name="London Dry Gin" />
+  <zutat id="gin" name="Gin" />
+  <zutat id="vermouth-sweet" name="Sweet Vermouth" />
+  <zutat id="vermouth-dry" name="Dry Vermouth" />
+  <zutat id="campari" name="Campari" />
+  <zutat id="syrup-gomme" name="Gomme Syrup" />
+  <zutat id="syrup-orgeat" name="Orgeat Syrup" />
+  <zutat id="peach-schnapps" name="Peach Schnapps" />
+  <zutat id="curacao-orange" name="Orange Curacao" />
+  <zutat id="grenadine" name="Grenadine" />
+  <zutat id="triple-sec" name="Triple Sec" />
+  <zutat id="rum-dark" name="Dark Rum" />
+  <zutat id="vodka" name="Vodka" />
+  <zutat id="cola" name="Cola" />
+  <zutat id="tonic-water" name="Tonic Water" />
+  <zutat id="angostura-bitters" name="Angostura Bitter" />
+  <zutat id="whiskey-rye" name="Rye Whiskey" />
+  <zutat id="rum-white" name="White Rum" />
+  <zutat id="lime-juice" name="Lime Juice" />
+  <zutat id="orange-juice" name="Orange Juice" />
+  <zutat id="cranberry-juice" name="Cranberry Juice" />    
+  <zutat id="lemon-juice" name="Lemon Juice" />
+  <zutat id="syrup-simple" name="Simple Syrup" />
+  <zutat id="rum-goslings-black-seal" name="Gosling's Black Seal Rum" />
+  <zutat id="beer-ginger" name="Ginger Beer" />
+  <zutat id="tequila-silver" name="Silver Tequila" />
+  <zutat id="cointreau" name="Cointreau" />
+</zutaten>
 
 </cocktailbar>
