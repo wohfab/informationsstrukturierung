@@ -1,0 +1,15 @@
+\babel@toc {ngerman}{}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Grundlage}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Projekteinführung}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Dateien}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Die Datenbank - \texttt {datenbank.xml}}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Das Schema - \texttt {schema.xsd}}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Das Stylesheet - \texttt {stylesheet.xsl}}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Cascading Stylesheet - \texttt {css/main.css}}{13}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Weitere Dateien}{16}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Schluss-Erklärung und Ausblick}{17}{chapter.3}%
+\vspace {\normalbaselineskip }
+\hrule 
+\vspace {\normalbaselineskip }
+\contentsline {chapter}{Eigenständigkeitserklärung}{I}{chapter*.2}%
